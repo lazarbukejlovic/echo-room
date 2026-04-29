@@ -4,7 +4,7 @@ A social communication app where posts become conversations.
 
 ## Live Demo
 
-**Live App:** https://echo-room.vercel.app  
+## [Live App](https://echo-room-teal.vercel.app/)
 **Repository:** https://github.com/lazarbukejlovic-dotcom/echoroom
 
 ---
