@@ -90,4 +90,260 @@
   .glass-border {
     @apply border border-border/50;
   }
+
+  .ambient-base {
+    background:
+      radial-gradient(circle at 50% -20%, hsl(var(--ember) / 0.18) 0%, transparent 42%),
+      radial-gradient(circle at 8% 72%, hsl(var(--ember) / 0.12) 0%, transparent 35%),
+      radial-gradient(circle at 92% 65%, hsl(var(--ember) / 0.1) 0%, transparent 33%),
+      linear-gradient(145deg, hsl(0 0% 6%) 0%, hsl(0 0% 5%) 40%, hsl(0 0% 7%) 100%);
+  }
+
+  .ambient-blob {
+    @apply absolute rounded-full blur-3xl;
+    animation: ambient-drift 40s ease-in-out infinite;
+    background-image: radial-gradient(circle at 35% 35%, hsl(var(--ember) / 0.35), transparent 70%);
+    will-change: transform;
+  }
+
+  .ambient-blob-a {
+    left: -10rem;
+    top: -8rem;
+    height: 30rem;
+    width: 30rem;
+    animation-duration: 44s;
+  }
+
+  .ambient-blob-b {
+    right: -9rem;
+    top: 20%;
+    height: 28rem;
+    width: 28rem;
+    animation-duration: 36s;
+    animation-delay: 3.5s;
+  }
+
+  .ambient-blob-c {
+    left: 18%;
+    bottom: -11rem;
+    height: 33rem;
+    width: 33rem;
+    animation-duration: 48s;
+    animation-delay: 7s;
+  }
+
+  .ambient-blob-d {
+    right: 6%;
+    bottom: -8rem;
+    height: 24rem;
+    width: 24rem;
+    animation-duration: 38s;
+    animation-delay: 5.4s;
+  }
+
+  .ambient-noise {
+    background-image:
+      radial-gradient(circle at 20% 18%, hsl(0 0% 100% / 0.014) 0 1px, transparent 1px),
+      radial-gradient(circle at 72% 60%, hsl(0 0% 100% / 0.01) 0 1px, transparent 1px),
+      radial-gradient(circle at 40% 78%, hsl(0 0% 100% / 0.012) 0 1px, transparent 1px);
+    background-size: 4px 4px, 6px 6px, 5px 5px;
+    mix-blend-mode: screen;
+  }
+
+  .ambient-vignette {
+    background: radial-gradient(circle at 50% 45%, transparent 36%, hsl(0 0% 2% / 0.58) 100%);
+  }
+
+  .network-grid {
+    background-image:
+      linear-gradient(hsl(var(--border) / 0.22) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.22) 1px, transparent 1px),
+      radial-gradient(circle at 18% 12%, hsl(var(--ember) / 0.12), transparent 36%),
+      radial-gradient(circle at 82% 80%, hsl(var(--ember) / 0.1), transparent 34%);
+    background-size: 52px 52px, 52px 52px, auto, auto;
+    mask-image: radial-gradient(circle at 50% 45%, black 42%, transparent 100%);
+  }
+
+  .network-link {
+    animation: network-link 16s ease-in-out infinite;
+  }
+
+  .network-node {
+    box-shadow: 0 0 0 0 hsl(var(--ember) / 0.3);
+    animation: network-node 3.4s ease-in-out infinite;
+  }
+
+  .network-signal {
+    animation: network-signal 10s ease-in-out infinite;
+  }
+
+  .social-chip {
+    @apply rounded-full border shadow-sm backdrop-blur-md;
+  }
+
+  .social-chip-message {
+    @apply border-primary/25 bg-card/65 text-muted-foreground;
+  }
+
+  .social-chip-presence {
+    @apply border-border/70 bg-background/55 text-foreground/85;
+  }
+
+  .social-chip-status {
+    @apply border-primary/30 bg-background/55 text-primary;
+  }
+
+  .social-chip-avatar {
+    @apply border-primary/30 bg-card/70 text-foreground;
+  }
+
+  .social-float {
+    animation: social-float 20s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  .social-drift {
+    animation: social-drift 26s linear infinite;
+    will-change: transform;
+  }
+
+  .social-fade {
+    animation: social-fade 16s ease-in-out infinite;
+  }
+
+  .social-pulse {
+    animation: social-pulse 2.9s ease-in-out infinite;
+  }
+
+  .social-marquee {
+    animation: social-marquee 20s linear infinite;
+  }
+}
+
+@keyframes ambient-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  40% {
+    transform: translate3d(24px, -18px, 0) scale(1.08);
+  }
+  70% {
+    transform: translate3d(-12px, 14px, 0) scale(0.95);
+  }
+}
+
+@keyframes network-link {
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes network-node {
+  0%,
+  100% {
+    opacity: 0.45;
+    box-shadow: 0 0 0 0 hsl(var(--ember) / 0.25);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 0 8px hsl(var(--ember) / 0);
+  }
+}
+
+@keyframes network-signal {
+  0% {
+    transform: translate3d(-10px, 0, 0);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  50% {
+    transform: translate3d(20px, -8px, 0);
+    opacity: 0.7;
+  }
+  80% {
+    opacity: 0.2;
+  }
+  100% {
+    transform: translate3d(34px, 0, 0);
+    opacity: 0;
+  }
+}
+
+@keyframes social-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, -14px, 0) scale(1.03);
+  }
+}
+
+@keyframes social-drift {
+  0% {
+    transform: translate3d(-10px, 0, 0);
+  }
+  50% {
+    transform: translate3d(10px, -10px, 0);
+  }
+  100% {
+    transform: translate3d(-10px, 0, 0);
+  }
+}
+
+@keyframes social-fade {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+@keyframes social-pulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    box-shadow: 0 0 0 0 hsl(var(--ember) / 0.28);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 0 10px hsl(var(--ember) / 0);
+  }
+}
+
+@keyframes social-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ambient-blob,
+  .network-link,
+  .network-node,
+  .network-signal,
+  .social-float,
+  .social-drift,
+  .social-fade,
+  .social-pulse,
+  .social-marquee {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .ambient-noise {
+    opacity: 0.12;
+  }
 }

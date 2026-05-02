@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/lib/auth-context";
 import { Input } from "@/components/ui/input";
-import { Search, Loader2, Users, Radio, TrendingUp, Flame } from "lucide-react";
+import { Search, Loader2, Users, Radio, Flame } from "lucide-react";
 import { Link } from "react-router-dom";
 import PostCard from "@/components/PostCard";
 
@@ -105,8 +105,8 @@ export default function SearchPage() {
   const isSearching = query.length >= 2;
 
   return (
-    <div className="mx-auto max-w-xl">
-      <header className="sticky top-0 z-40 border-b border-border bg-background/80 backdrop-blur-lg px-4 py-3">
+    <div className="mx-auto max-w-2xl">
+      <header className="sticky top-0 z-40 border-b border-border/80 bg-background/82 backdrop-blur-xl px-4 py-3">
         <h1 className="text-lg font-bold font-heading mb-3">Discover</h1>
         <div className="relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
@@ -119,7 +119,7 @@ export default function SearchPage() {
         </div>
       </header>
 
-      <div className="px-4 py-4">
+      <div className="px-4 py-4 sm:px-5">
         {/* Search results */}
         {isSearching ? (
           <>
@@ -133,7 +133,7 @@ export default function SearchPage() {
                 <h2 className="text-sm font-semibold text-muted-foreground mb-3 flex items-center gap-1.5">
                   <Users className="h-4 w-4" /> People
                 </h2>
-                <div className="space-y-1">
+                <div className="space-y-1 rounded-2xl border border-border/65 bg-card/55 p-2 backdrop-blur-md">
                   {results.users.map((u: any) => (
                     <UserRow key={u.id} user={u} />
                   ))}
@@ -143,7 +143,7 @@ export default function SearchPage() {
             {results && results.posts.length > 0 && (
               <div>
                 <h2 className="text-sm font-semibold text-muted-foreground mb-3">Posts</h2>
-                <div className="space-y-1">
+                <div className="space-y-1 rounded-2xl border border-border/65 bg-card/55 p-2 backdrop-blur-md">
                   {results.posts.map((p: any) => (
                     <Link key={p.id} to={`/post/${p.id}`} className="block rounded-xl p-3 hover:bg-secondary/50 transition-colors">
                       <p className="text-sm text-foreground line-clamp-2">{p.content}</p>
@@ -165,7 +165,7 @@ export default function SearchPage() {
                   <Radio className="h-4 w-4 text-primary animate-pulse" />
                   Active Rooms
                 </h2>
-                <div className="space-y-2">
+                <div className="space-y-2 rounded-2xl border border-border/65 bg-card/55 p-3 backdrop-blur-md">
                   {activeRooms.map((room: any) => (
                     <Link
                       key={room.id}
@@ -199,7 +199,7 @@ export default function SearchPage() {
                   <Users className="h-4 w-4 text-muted-foreground" />
                   People to follow
                 </h2>
-                <div className="space-y-1">
+                <div className="space-y-1 rounded-2xl border border-border/65 bg-card/55 p-2 backdrop-blur-md">
                   {suggestedPeople.map((u: any) => (
                     <UserRow key={u.id} user={u} showBio />
                   ))}
@@ -214,7 +214,7 @@ export default function SearchPage() {
                   <Flame className="h-4 w-4 text-primary" />
                   Trending
                 </h2>
-                <div className="-mx-4">
+                <div className="-mx-2 sm:-mx-1">
                   {trendingPosts.map((post: any) => (
                     <PostCard key={post.id} post={post} />
                   ))}

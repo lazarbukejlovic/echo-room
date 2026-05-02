@@ -35,8 +35,8 @@ export default function SavedPostsPage() {
   });
 
   return (
-    <div className="mx-auto max-w-xl">
-      <header className="sticky top-0 z-40 flex items-center gap-2 border-b border-border bg-background/80 backdrop-blur-lg px-4 py-3">
+    <div className="mx-auto max-w-2xl">
+      <header className="sticky top-0 z-40 flex items-center gap-2 border-b border-border/80 bg-background/82 backdrop-blur-xl px-4 py-3">
         <Bookmark className="h-5 w-5 text-primary" />
         <h1 className="text-lg font-bold font-heading">Saved</h1>
       </header>
@@ -44,13 +44,15 @@ export default function SavedPostsPage() {
       {isLoading ? (
         <div className="flex justify-center py-12"><Loader2 className="h-6 w-6 animate-spin text-muted-foreground" /></div>
       ) : !savedPosts || savedPosts.length === 0 ? (
-        <div className="flex flex-col items-center justify-center py-20 text-center px-4">
-          <Bookmark className="h-12 w-12 text-muted-foreground mb-3" />
-          <h2 className="text-lg font-semibold font-heading">No saved posts</h2>
-          <p className="mt-1 text-sm text-muted-foreground">Save posts to revisit them later</p>
+        <div className="px-4 py-20">
+          <div className="mx-auto max-w-sm rounded-3xl border border-border/70 bg-card/62 p-8 text-center shadow-[0_24px_60px_-42px_hsl(var(--ember)/0.35)] backdrop-blur-md">
+            <Bookmark className="mx-auto mb-3 h-12 w-12 text-muted-foreground" />
+            <h2 className="text-lg font-semibold font-heading">No saved posts</h2>
+            <p className="mt-1 text-sm text-muted-foreground">Save posts to revisit them later</p>
+          </div>
         </div>
       ) : (
-        <div>
+        <div className="px-2 pb-3 sm:px-3">
           {savedPosts.map((post: any) => (
             <PostCard key={post.id} post={post} />
           ))}

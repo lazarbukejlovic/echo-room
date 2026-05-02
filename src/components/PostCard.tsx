@@ -77,7 +77,7 @@ export default function PostCard({ post }: Props) {
   const isOfficial = profile?.username === "echoroom";
 
   return (
-    <article className="border-b border-border px-4 py-4 animate-fade-in hover:bg-secondary/20 transition-colors">
+    <article className="my-3 rounded-2xl border border-border/75 bg-card/72 px-4 py-4 shadow-[0_20px_50px_-42px_hsl(var(--ember)/0.4)] backdrop-blur-lg animate-fade-in transition-colors hover:bg-card/88 hover:border-border">
       <div className="flex items-start gap-3">
         <Link to={`/user/${profile?.username}`}>
           <div className={cn(
@@ -112,9 +112,9 @@ export default function PostCard({ post }: Props) {
           </div>
 
           <Link to={`/post/${post.id}`}>
-            {post.content && <p className="mt-1 text-sm text-foreground whitespace-pre-wrap leading-relaxed">{post.content}</p>}
+            {post.content && <p className="mt-1.5 text-sm text-foreground whitespace-pre-wrap leading-relaxed">{post.content}</p>}
             {post.image_url && (
-              <img src={post.image_url} alt="" className="mt-3 w-full rounded-xl object-cover max-h-96 border border-border" />
+              <img src={post.image_url} alt="" className="mt-3 w-full rounded-xl object-cover max-h-96 border border-border/80" />
             )}
           </Link>
 
@@ -131,8 +131,8 @@ export default function PostCard({ post }: Props) {
           )}
 
           {/* Actions */}
-          <div className="mt-3 flex items-center gap-6">
-            <button onClick={toggleLike} className="flex items-center gap-1.5 group">
+          <div className="mt-3 flex items-center gap-2">
+            <button onClick={toggleLike} className="flex items-center gap-1.5 rounded-full border border-border/70 bg-background/65 px-2.5 py-1.5 group transition-colors hover:border-primary/30 hover:bg-primary/10">
               <Heart
                 className={cn(
                   "h-4 w-4 transition-colors",
@@ -143,14 +143,14 @@ export default function PostCard({ post }: Props) {
                 {optimisticCount > 0 ? optimisticCount : ""}
               </span>
             </button>
-            <Link to={`/post/${post.id}`} className="flex items-center gap-1.5 group">
+            <Link to={`/post/${post.id}`} className="flex items-center gap-1.5 rounded-full border border-border/70 bg-background/65 px-2.5 py-1.5 group transition-colors hover:bg-secondary/55">
               <MessageCircle className="h-4 w-4 text-muted-foreground group-hover:text-foreground transition-colors" />
               <span className="text-xs text-muted-foreground">{commentCount > 0 ? commentCount : ""}</span>
             </Link>
-            <button onClick={copyLink} className="group">
+            <button onClick={copyLink} className="group rounded-full border border-border/70 bg-background/65 p-1.5 transition-colors hover:bg-secondary/55">
               <Share2 className="h-4 w-4 text-muted-foreground group-hover:text-foreground transition-colors" />
             </button>
-            <button onClick={toggleSave} className="group ml-auto">
+            <button onClick={toggleSave} className="group ml-auto rounded-full border border-border/70 bg-background/65 p-1.5 transition-colors hover:border-primary/30 hover:bg-primary/10">
               <Bookmark
                 className={cn(
                   "h-4 w-4 transition-colors",

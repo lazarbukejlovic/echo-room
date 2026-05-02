@@ -5,13 +5,11 @@ import { useAuth } from "@/lib/auth-context";
 import PostCard from "@/components/PostCard";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Edit, Loader2, MapPin, UserPlus, UserMinus } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
 import { useQueryClient } from "@tanstack/react-query";
 
 export default function ProfilePage() {
   const { username } = useParams();
   const { user } = useAuth();
-  const { toast } = useToast();
   const queryClient = useQueryClient();
 
   // If no username, show own profile
@@ -95,14 +93,14 @@ export default function ProfilePage() {
   }
 
   return (
-    <div className="mx-auto max-w-xl">
-      <header className="sticky top-0 z-40 flex items-center gap-3 border-b border-border bg-background/80 backdrop-blur-lg px-4 py-3">
+    <div className="mx-auto max-w-2xl">
+      <header className="sticky top-0 z-40 flex items-center gap-3 border-b border-border/80 bg-background/82 backdrop-blur-xl px-4 py-3">
         <Link to="/" className="text-muted-foreground hover:text-foreground"><ArrowLeft className="h-5 w-5" /></Link>
         <h1 className="text-lg font-bold font-heading">{profile.display_name}</h1>
       </header>
 
       {/* Profile header */}
-      <div className="px-4 py-6">
+      <div className="m-3 rounded-2xl border border-border/70 bg-card/66 px-4 py-6 shadow-[0_24px_60px_-42px_hsl(var(--ember)/0.35)] backdrop-blur-md">
         <div className="flex items-start gap-4">
           <div className="h-20 w-20 rounded-full bg-secondary flex items-center justify-center overflow-hidden flex-shrink-0">
             {profile.avatar_url ? (
@@ -147,11 +145,11 @@ export default function ProfilePage() {
       </div>
 
       {/* Posts */}
-      <div className="border-t border-border">
+      <div className="px-2 pb-3 sm:px-3">
         {posts && posts.length > 0 ? (
           posts.map((post: any) => <PostCard key={post.id} post={post} />)
         ) : (
-          <p className="py-12 text-center text-sm text-muted-foreground">No posts yet</p>
+          <p className="rounded-2xl border border-border/70 bg-card/62 py-12 text-center text-sm text-muted-foreground backdrop-blur-md">No posts yet</p>
         )}
       </div>
     </div>
